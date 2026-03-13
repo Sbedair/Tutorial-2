@@ -1,6 +1,10 @@
 #pragma once
 #include <string>
 
+#include <vector>
+
+class Section;
+
 class Student
 {
 private:
@@ -11,6 +15,7 @@ private:
 	double tuition;
 	double creditsEnrolled;
 	double creditsCompleted;
+	std::vector <Section> EnrolledCourses;
 public:
 	
 	Student(std::string n = "", std::string p = "");
@@ -25,6 +30,7 @@ public:
 	double getCreditsEnrolled();
 	double getCreditsCompleted();
 
+	bool Enroll(Section* s);
 	void setName(std::string n);
 	void setProgram(std::string p);
 

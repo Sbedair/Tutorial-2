@@ -5,6 +5,8 @@ Section::Section(int capacity, Course &c) {
 	classCapacity = capacity;
 	course = &c;
 	students = new Student[classCapacity];
+	currentCapacity = 0;
+	Prof = new Professor();
 }
 
 void Section::setClassCapacity(int newCap) { 
@@ -26,15 +28,15 @@ void Section::setClassCapacity(int newCap) {
 bool Section::addStudent(Student &s) {
 	if (currentCapacity < classCapacity)
 	{
-		students[currentCapacity] = s;
-		currentCapacity++;
-		return true;
+		if (s.Enroll(this)) {
+			students[currentCapacity] = s;
+			currentCapacity++;
+			return true;
+		}
 	}
-	else {
 		return false;
-	}
-
 }
+
 
 bool Section::removeStudent(Student& s) {
 	for (int i = 0; i < classCapacity; i++) {

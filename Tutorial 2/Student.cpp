@@ -1,7 +1,9 @@
 #include "Student.h"
 #include <iostream>
+#include "Section.h"
 
 static int ID = 0;
+static double MaxCreds = 19.5;
 
 Student::Student(std::string n, std::string p) {
 	name = n;
@@ -60,4 +62,13 @@ void Student::setName(std::string n) {
 
 void Student::setProgram(std::string p) {
 	program = p;
+}
+
+bool Student::Enroll(Section* s) {
+	if (s->getCourse().getCredits() + creditsEnrolled < MaxCreds) {
+		EnrolledCourses.push_back(*s);
+		creditsEnrolled += s->getCourse().getCredits();
+		return true;
+	}
+	return false;
 }

@@ -10,7 +10,7 @@ private:
 
 
 public:
-	Professor(std::string spc, std::string N, std::string dept, int eid, double salary);
+	Professor(std::string spc = "", std::string N = "", std::string dept = "", int eid = 0, double salary = 0);
 	~Professor() {
 		std::cout << "\nProfessor Destructed";
 	}
